@@ -5,15 +5,15 @@ from application.message import Message
 class BaseChannel:
         def __init__(self,
                      endpoint: str=None,
-                     connector: str=None):
+                     url: str=None):
 
                     self._endpoint = endpoint
                     try:
-                        parsed = urlparse(connector)
-                        self._connector = connector
-                        self._scheme = parsed.scheme
-                        self._hostname = parsed.hostname
-                        self._port = parsed.port
+                        parsed_url = urlparse(url)
+                        self._url = url
+                        self._scheme = parsed_url.scheme
+                        self._hostname = parsed_url.hostname
+                        self._port = parsed_url.port
                     except:
                         raise ValueError('Invalid URL connector')
 
@@ -45,4 +45,4 @@ class Channel:
     @classmethod
     def create(cls, endpoint: str, url: str) -> BaseChannel:
         if endpoint == cls.SENDER:
-            return SenderChannel(endpoint=endpoint, connector=url)
+            return SenderChannel(endpoint=endpoint, url=url)
