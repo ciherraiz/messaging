@@ -29,10 +29,19 @@ class BaseChannel:
         def port(self) -> int:
             return self._port
 
+        def close(self):
+            raise NotImplementedError('Close method is not implemented yet')
+
 
 class SenderChannel(BaseChannel):
 
     def send(self, message: Message):
+        raise NotImplementedError('Send method is not implemented yet')
+
+
+class ReceiverChannel(BaseChannel):
+
+    def receive(self) -> Message:
         raise NotImplementedError('Send method is not implemented yet')
 
 

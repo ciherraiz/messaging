@@ -1,2 +1,4 @@
 class Message:
-    pass
+    def __init__(self,
+                 data: str):
+                self.body = data
